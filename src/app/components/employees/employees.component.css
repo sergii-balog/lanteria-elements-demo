@@ -1,0 +1,14 @@
+.photo {
+  background-size: cover;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background-position: center;
+  border: 3px #f5f5f5 solid;
+  background-repeat: no-repeat;
+  text-align: left;
+  margin-right: 3px;
+}
+.label-primary {
+  cursor: pointer;
+}

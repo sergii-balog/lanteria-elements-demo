@@ -1,0 +1,19 @@
+Enter employee name:
+<input type="text" [(ngModel)]="keyword" (ngModelChange)="keyPress()" />
+<div class="row">
+  <div *ngFor="let employee of employees" class="col-md-2">
+    <div
+      class="photo"
+      [ngStyle]="{ 'background-image': 'url(' + employee.photo + ')' }"
+    ></div>
+    <div
+      class="label label-primary"
+      (click)="showEmployeeCard(employee.value, employee.label)"
+    >
+      {{ employee.label }}
+    </div>
+  </div>
+</div>
+<div class="label label-success" *ngIf="employees.length > 0">
+  {{ this.employees.length }} employee(s) found.
+</div>

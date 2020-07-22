@@ -1,0 +1,49 @@
+<div>
+  <h1>Hello {{ name }}</h1>
+</div>
+<div class="panel panel-primary" *ngIf="currentUser">
+  <div class="panel-heading">
+    SharePoint User info
+  </div>
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-md-4">
+        <h2>SP User info</h2>
+        <h3>{{ currentUser.Title }}</h3>
+        <p>Email: {{ currentUser.Email }}</p>
+        <p>Login: {{ currentUser.LoginName }}</p>
+      </div>
+      <div class="col-md-4">
+        <h2>Employee info</h2>
+        <h3>{{ employee.Title }} ({{ employee.Id }})</h3>
+        <p>City: {{ employee.City }}</p>
+        <p>Phone: {{ employee.CellPhone }}</p>
+      </div>
+      <div class="col-md-4">
+        <h2>Employment history info</h2>
+        <div *ngFor="let data of employmentData">
+          From: <span>{{ data.StartDate | date: "dd/MM/yyyy" }}</span> Till:
+          <span *ngIf="data.EndDate">{{
+            data.EndDate | date: "dd/MM/yyyy"
+          }}</span>
+          <span *ngIf="!data.EndDate">N/A</span>
+          Position:
+          <span class="label label-default">{{ data.JobRole.Title }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="panel-footer">
+    <a
+      href="#"
+      class="btn btn-primary"
+      style="margin-right: 5px;"
+      (click)="getLists()"
+      >Get Lists</a
+    >
+    <a href="#" class="btn btn-default" (click)="clearLists()">Clear Lists</a>
+  </div>
+</div>
+<div *ngFor="let list of lists">
+  <img [src]="list.ImageUrl" /> {{ list.Title }} ( {{ list.ItemCount }})
+</div>
